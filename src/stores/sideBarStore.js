@@ -1,30 +1,24 @@
 import { defineStore } from "pinia";
 
-export const useItemStore= defineStore("itemStore", {
+export const useSideBarItem = defineStore("sideBarItem", {
   state: () => ({
-    movies: [
+    sideBarItem: [
       {
-        new: true,
-        hit: true,
-        frozen: true,
-        price: 496,
-        discount: true,
-        discount_price: 110,
-        name: 'Индейка, филе грудки на подложке замороженное "Индилайт"',
-        image: src
+        id: 1,
+        text: 'Бургеры',
+        imgSrc: '../images/icons/round.svg'
       },
       {
-        new: true,
-        hit: true,
-        frozen: true,
-        price: 496,
-        discount: true,
-        discount_price: 110,
-        name: 'Индейка, филе грудки на подложке замороженное "Индилайт"',
+        id: 2,
+        original_title: "The Batman",
+        overview:
+          "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+        poster_path: "/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg",
+        release_date: "2022-03-01",
+        isWatched: true,
       },
-
     ],
-    activeTab: 2,
+    // activeTab: 2,
   }),
   // getters: {
   //   watchedMovies() {
