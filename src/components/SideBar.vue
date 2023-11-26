@@ -1,44 +1,55 @@
 <template>
   <div class="sidebar">
-    <!-- <div class="sidebar-container">
-      <p class="sidebar-container__text">Бренд</p>
-      <img
-        class="sidebar-container__img"
-        alt="arrow"
-        src="../images/icons/arrow down.svg"
-      />
-    </div> -->
-    <SideBarTitle title="Бренд" :arrow="false"/>
+    <SideBarTitle title="Бренд" :arrow="false" />
     <div class="sidebar-block">
-    <SideBarTitle title="Страна" :arrow="true"/>
-    <div class="sidebar-choisen-items">
-      <ChosenItem
-       v-for="sideBarItem of sideBarStore.contriesItems"
-        :key="sideBarItem.id"
-        :sideBarItem="sideBarItem"
-      />
-    </div>
-  </div>
-    <div class="sidebar-block">
-    <SideBarTitle title="Направления меню" :arrow="true"/>
+      <SideBarTitle title="Страна" :arrow="true" />
       <div class="sidebar-choisen-items">
-       <ChosenItem
-       v-for="sideBarItem of sideBarStore.sideBarItem"
-        :key="sideBarItem.id"
-        :sideBarItem="sideBarItem"
-      />
+        <ChosenItem
+          v-for="sideBarItem of sideBarStore.contriesItems"
+          :key="sideBarItem.id"
+          :sideBarItem="sideBarItem"
+        />
+      </div>
+    </div>
+    <div class="sidebar-block">
+      <SideBarTitle title="Направления меню" :arrow="true" />
+      <div class="sidebar-choisen-items">
+        <ChosenItem
+          v-for="sideBarItem of sideBarStore.sideBarItem"
+          :key="sideBarItem.id"
+          :sideBarItem="sideBarItem"
+        />
+      </div>
+    </div>
+    <div class="sidebar-block">
+      <SideBarTitle title="Вид сыра" :arrow="true" />
+      <div class="sidebar-choisen-items">
+        <ChosenItem
+          v-for="sideBarItem of sideBarStore.typeOfCheeseItems"
+          :key="sideBarItem.id"
+          :sideBarItem="sideBarItem"
+        />
+      </div>
+    </div>
+    <div class="sidebar-block">
+      <SideBarTitle title="Вкус сыра" :arrow="true" />
+      <div class="sidebar-choisen-items">
+        <ChosenItem
+          v-for="sideBarItem of sideBarStore.tasteOfCheeseItems"
+          :key="sideBarItem.id"
+          :sideBarItem="sideBarItem"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import ChosenItem from './ChosenItem.vue';
-import { useSideBarItem } from '../stores/sideBarStore';
-import SideBarTitle from './SideBarTitle.vue';
+import ChosenItem from "./ChosenItem.vue";
+import { useSideBarItem } from "../stores/sideBarStore";
+import SideBarTitle from "./SideBarTitle.vue";
 const sideBarStore = useSideBarItem();
 </script>
- 
 
 <style scoped>
 .sidebar {
@@ -54,5 +65,4 @@ const sideBarStore = useSideBarItem();
   margin-top: 20px;
   row-gap: 14px;
 }
-
 </style>
