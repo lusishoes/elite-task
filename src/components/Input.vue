@@ -140,14 +140,16 @@ a,
 }
 
 /* style the input element with type "range" */
-.custom-slider input[type="range"] {
+.indicator-input {
   position: relative;
   appearance: none;
+
   background: none;
   border-radius: 999px;
   z-index: 0;
   height: 100%;
   pointer-events: none;
+
 }
 
 /* ::before element to replace the slider track */
@@ -177,7 +179,7 @@ a,
   margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2);
   background: #FFFFFF;
   /* border: 1px solid  #00865a; */
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.2);
   border-radius: 999px;
   pointer-events: all;
   appearance: none;
@@ -264,8 +266,19 @@ a,
   height: 37px;
   border-radius: 6px;
   border: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; 
+  color: #858585;
+  outline: none;
+  text-align:center;
 }
 
+/* .minmax-input::-webkit-outer-spin-button, */
+.minmax-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 .minmax-input:last-of-type {
   margin-left: 7px;
 }

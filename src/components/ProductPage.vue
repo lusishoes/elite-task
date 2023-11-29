@@ -38,7 +38,7 @@
 
 <script setup>
 import SelectorItem from "./SelectorItem.vue";
-import { useElementChosen } from "../stores/elementChosen";
+import { useElementChosen } from "../stores/elementChosenStore";
 import SelectedElement from "./SelectedElement.vue";
 import GoodsElement from './GoodsElement.vue';
 const elementChosen = useElementChosen();

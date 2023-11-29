@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { useElementChosen } from '../stores/elementChosen';
+import { useElementChosen } from '../stores/elementChosenStore';
 
 const elementChosen = useElementChosen();
 const props = defineProps({
