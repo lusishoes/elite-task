@@ -87,8 +87,25 @@ const onInput = ({ target }) => {
 <template>
   <div class="range-inputs">
     <div class="minmax-inputs">
-    <input type="number" :step="step" v-model="sliderMinValue" class="minmax-input"/>
-    <input type="number" :step="step" v-model="sliderMaxValue" class="minmax-input"/>
+      <div class="minmax-inputs-wrapper">
+        <p class="minmax-inputs-text">
+          от
+        </p>
+        <p class="minmax-inputs-price">
+          до
+        </p>
+        <input type="number" :step="step" v-model="sliderMinValue" class="minmax-input" :min="min" :max="max"/>
+
+      </div>
+      <div class="minmax-inputs-wrapper">
+        <p class="minmax-inputs-text">
+          от
+        </p>
+        <p class="minmax-inputs-price">
+          до
+        </p>
+        <input type="number" :step="step" v-model="sliderMaxValue" class="minmax-input" :min="min" :max="max"/>
+      </div>
   </div>
   <div ref="slider" class="custom-slider minmax">
     <div class="minmax-indicator"></div>
@@ -121,6 +138,36 @@ const onInput = ({ target }) => {
 </div>
 </template>
 <style scoped>
+.minmax-inputs-text {
+  position: absolute;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  color: #858585;
+  left: 16px;
+  bottom: -3px;
+}
+
+.minmax-inputs-price {
+  position: absolute;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  color: #858585;
+  bottom: -3px;
+  right: 16px;
+}
+
+.range-inputs {
+  width: 220px;
+}
+.minmax-inputs-wrapper {
+  position: relative;
+  /* text-align: center; */
+}
+
 a,
 .green {
   text-decoration: none;
@@ -143,7 +190,7 @@ a,
 .indicator-input {
   position: relative;
   appearance: none;
-
+  /* width: 107px; */
   background: none;
   border-radius: 999px;
   z-index: 0;
@@ -231,7 +278,7 @@ a,
 .custom-slider .minmax-indicator::before {
   content: "";
   position: absolute;
-  background: #00865a;
+  background: #46A175;
   height: 100%;
   left: var(--progressLeft);
   right: var(--progressRight);
@@ -260,9 +307,9 @@ a,
 }
 
 .minmax-input {
-  width: 50px;
+  /* width: 50px; */
   background-color: rgba(93, 136, 150, 0.08);
-  width: 106px;
+  width: 102px;
   height: 37px;
   border-radius: 6px;
   border: none;
@@ -273,13 +320,18 @@ a,
   color: #858585;
   outline: none;
   text-align:center;
+  margin-left: 7px;
 }
 
 /* .minmax-input::-webkit-outer-spin-button, */
 .minmax-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-.minmax-input:last-of-type {
-  margin-left: 7px;
+/* .minmax-input:nth-child(0) {
+  margin-left: 0;
+} */
+
+.minmax-input:last-child{
+  margin-left: 0;
 }
 </style>
