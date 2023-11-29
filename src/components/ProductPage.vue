@@ -28,6 +28,11 @@
         :el="el"
       />
     </div>
+    <div class="goods-list">
+      <GoodsElement 
+      :isVisiblePopup="isVisiblePopup"
+      :setPopupVisible="setPopupVisible"/>
+    </div>
   </div>
 </template>
 
@@ -35,7 +40,18 @@
 import SelectorItem from "./SelectorItem.vue";
 import { useElementChosen } from "../stores/elementChosen";
 import SelectedElement from "./SelectedElement.vue";
+import GoodsElement from './GoodsElement.vue';
 const elementChosen = useElementChosen();
+const props = defineProps({
+  isVisiblePopup: {
+    type: Boolean,
+    required: true,
+  },
+  setPopupVisible: {
+    type: Function,
+    required: true,
+  },
+});
 </script>
 
 <style scoped>
@@ -48,7 +64,6 @@ const elementChosen = useElementChosen();
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   height: 43px;
 }
 .items-title {
@@ -114,5 +129,11 @@ const elementChosen = useElementChosen();
   flex-wrap: wrap;
   column-gap: 10px;
   margin-top: 10px;
+}
+
+.goods-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 </style>

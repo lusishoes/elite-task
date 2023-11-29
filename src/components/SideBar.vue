@@ -41,13 +41,23 @@
         />
       </div>
     </div>
+    <Input       
+      :min="140"
+      :max="480"
+      v-model:min-value="sliderMin"
+      v-model:max-value="sliderMax"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import ChosenItem from "./ChosenItem.vue";
 import { useSideBarItem } from "../stores/sideBarStore";
 import SideBarTitle from "./SideBarTitle.vue";
+import Input from "./Input.vue";
+const sliderMin = ref(140);
+const sliderMax = ref(480);
 const sideBarStore = useSideBarItem();
 </script>
 
