@@ -39,5 +39,6 @@ const props = defineProps({
 .sidebar-choisen-items__item-text {
   margin: 0;
   margin-left: 8px;
+  max-width: 132px;
 }
 </style>

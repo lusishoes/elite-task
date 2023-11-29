@@ -12,12 +12,21 @@
       </div>
     </div>
     <div class="sidebar-block">
-      <SideBarTitle title="Направления меню" :arrow="true" />
-      <div class="sidebar-choisen-items">
-        <ChosenItem
-          v-for="sideBarItem of sideBarStore.sideBarItem"
-          :key="sideBarItem.id"
-          :sideBarItem="sideBarItem"
+      <div class="sidebar-choisen-items-block">
+        <div class="sidebar-block-list">
+          <SideBarTitle title="Направления меню" :arrow="true" />
+          <div class="sidebar-choisen-items">
+            <ChosenItem
+              v-for="sideBarItem of sideBarStore.sideBarItem"
+              :key="sideBarItem.id"
+              :sideBarItem="sideBarItem"
+            />
+          </div>
+        </div>
+        <img
+          class="sidebar-scrollbar"
+          alt="scrollbar"
+          src="../images/icons/scrollbar.svg"
         />
       </div>
     </div>
@@ -41,9 +50,9 @@
         />
       </div>
     </div>
-    <div class="sidebar-weight">
+    <div class="sidebar-block">
       <SideBarTitle title="Вес" :arrow="null" />
-      <Input       
+      <Input
         :min="140"
         :max="480"
         measure="г"
@@ -51,9 +60,9 @@
         v-model:max-value="sliderMax"
       />
     </div>
-    <div class="sidebar-price">
+    <div class="sidebar-block">
       <SideBarTitle title="Цена" :arrow="null" />
-      <Input       
+      <Input
         :min="140"
         :max="480"
         measure="₽"
@@ -61,9 +70,7 @@
         v-model:max-value="sliderMax1"
       />
     </div>
-    <div class="sidebar-reset-btn">
-      Очистить фильтр
-    </div>
+    <div class="sidebar-reset-btn">Очистить фильтр</div>
   </div>
 </template>
 
@@ -82,6 +89,16 @@ const sideBarStore = useSideBarItem();
 
 <style scoped>
 
+.sidebar-choisen-items-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sidebar-scrollbar {
+  margin-top: 20px;
+  height: 220px;
+}
 .sidebar-reset-btn {
   font-size: 15px;
   font-style: normal;
