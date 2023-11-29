@@ -57,11 +57,13 @@
         :min="140"
         :max="480"
         measure="₽"
-        v-model:min-value="sliderMin"
-        v-model:max-value="sliderMax"
+        v-model:min-value="sliderMin1"
+        v-model:max-value="sliderMax1"
       />
     </div>
-
+    <div class="sidebar-reset-btn">
+      Очистить фильтр
+    </div>
   </div>
 </template>
 
@@ -73,10 +75,28 @@ import SideBarTitle from "./SideBarTitle.vue";
 import Input from "./Input.vue";
 const sliderMin = ref(140);
 const sliderMax = ref(480);
+const sliderMin1 = ref(140);
+const sliderMax1 = ref(480);
 const sideBarStore = useSideBarItem();
 </script>
 
 <style scoped>
+
+.sidebar-reset-btn {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #858585;
+  border-radius: 6px;
+  display: flex;
+  /* padding: 14px 45px; */
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 48px;
+  background-color: rgba(93, 136, 150, 0.08);
+}
 .sidebar {
   display: flex;
   flex-direction: column;

@@ -6,10 +6,6 @@ export const useItemStore = defineStore("itemStore", {
       products: [
         {
           id: 1,
-          name: "Iphone 12",
-          price: 700,
-          image:
-            "https://cdn.pixabay.com/photo/2016/11/20/08/33/camera-1842202__480.jpg",
         },
       ],
       cartItems: [],
