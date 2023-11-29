@@ -41,12 +41,27 @@
         />
       </div>
     </div>
-    <Input       
-      :min="140"
-      :max="480"
-      v-model:min-value="sliderMin"
-      v-model:max-value="sliderMax"
-    />
+    <div class="sidebar-weight">
+      <SideBarTitle title="Вес" :arrow="null" />
+      <Input       
+        :min="140"
+        :max="480"
+        measure="г"
+        v-model:min-value="sliderMin"
+        v-model:max-value="sliderMax"
+      />
+    </div>
+    <div class="sidebar-price">
+      <SideBarTitle title="Цена" :arrow="null" />
+      <Input       
+        :min="140"
+        :max="480"
+        measure="₽"
+        v-model:min-value="sliderMin"
+        v-model:max-value="sliderMax"
+      />
+    </div>
+
   </div>
 </template>
 

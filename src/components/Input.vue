@@ -23,6 +23,10 @@ const { min, max, step, minValue, maxValue } = defineProps({
     type: Number,
     default: 80,
   },
+  measure: {
+    type: String,
+    default: 'до'
+  }
 });
 
 // define emits for the slider component
@@ -41,9 +45,9 @@ const getPercent = (value, min, max) => {
 };
 
 // function to get the difference between the min and max values
-const sliderDifference = computed(() => {
-  return Math.abs(sliderMaxValue.value - sliderMinValue.value);
-});
+// const sliderDifference = computed(() => {
+//   return Math.abs(sliderMaxValue.value - sliderMinValue.value);
+// });
 
 // function to set the css variables for width, left and right
 const setCSSProps = (left, right) => {
@@ -92,7 +96,7 @@ const onInput = ({ target }) => {
           от
         </p>
         <p class="minmax-inputs-price">
-          до
+         {{ measure }}
         </p>
         <input type="number" :step="step" v-model="sliderMinValue" class="minmax-input" :min="min" :max="max"/>
 
@@ -102,7 +106,7 @@ const onInput = ({ target }) => {
           от
         </p>
         <p class="minmax-inputs-price">
-          до
+          {{ measure }}
         </p>
         <input type="number" :step="step" v-model="sliderMaxValue" class="minmax-input" :min="min" :max="max"/>
       </div>
@@ -162,6 +166,7 @@ const onInput = ({ target }) => {
 
 .range-inputs {
   width: 220px;
+  margin-top: 20px;
 }
 .minmax-inputs-wrapper {
   position: relative;

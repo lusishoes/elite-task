@@ -2,13 +2,13 @@
       <div class="sidebar-container">
         <p class="sidebar-container__text">{{ title }}</p>
         <img
-        v-if="arrow === true"
+        v-if="arrow === true && arrow !== null"
           class="sidebar-container__img"
           alt="arrow"
           src="../images/icons/arrow up.svg"
         />
         <img
-        v-else
+        v-if="arrow === false && arrow !== null"
           class="sidebar-container__img"
           alt="arrow"
           src="../images/icons/arrow down.svg"
