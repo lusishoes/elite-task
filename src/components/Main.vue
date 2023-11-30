@@ -2,8 +2,7 @@
   <main class="main">
     <SideBar />
     <ProductPage
-      :isVisiblePopup="isVisiblePopup"
-      :setPopupVisible="setPopupVisible"
+
     />
   </main>
 </template>
@@ -12,16 +11,7 @@
 import SideBar from "./SideBar.vue";
 import ProductPage from "./ProductPage.vue";
 
-const props = defineProps({
-  isVisiblePopup: {
-    type: Boolean,
-    required: true,
-  },
-  setPopupVisible: {
-    type: Function,
-    required: true,
-  },
-});
+
 </script>
 
 <style scoped>

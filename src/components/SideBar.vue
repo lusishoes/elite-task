@@ -12,9 +12,10 @@
       </div>
     </div>
     <div class="sidebar-block">
+      <SideBarTitle title="Направления меню" :arrow="true" />
       <div class="sidebar-choisen-items-block">
         <div class="sidebar-block-list">
-          <SideBarTitle title="Направления меню" :arrow="true" />
+          
           <div class="sidebar-choisen-items">
             <ChosenItem
               v-for="sideBarItem of sideBarStore.sideBarItem"

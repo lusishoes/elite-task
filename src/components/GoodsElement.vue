@@ -19,8 +19,8 @@
         alt="arrow"
         src="../images/icons/emptyheart.svg"
       />
-      <div class="goods-item-popup-opener" :class="{ show__popup: showBtn }" @click="setPopupVisible(!isVisiblePopup)" >
-        <p class="goods-item__popup-description" @click="console.log(isVisiblePopup)">Подробнее</p>
+      <div class="goods-item-popup-opener"  :class="{ show__popup: showBtn }" @click="popupStore.togglePopup(true)">
+        <p class="goods-item__popup-description">Подробнее</p>
       </div>
       <div class="goods-items-tags">
         <div class="goods-items-tags-hit">
@@ -66,17 +66,9 @@
 <script setup>
 import { ref } from "vue";
 const showBtn = ref(false);
+import { usePopupStore } from "../stores/popupStore";
+const popupStore = usePopupStore();
 
-const props = defineProps({
-  isVisiblePopup: {
-    type: Boolean,
-    required: true,
-  },
-  setPopupVisible: {
-    type: Function,
-    required: true,
-  },
-});
 
 </script>
 
@@ -249,6 +241,7 @@ const props = defineProps({
   left: 40px;
   bottom: 60px;
   padding: 8px 38px;
+  cursor: pointer;
   background-color: #feedef;
   border-radius: 9px;
   /* width: 160px; */

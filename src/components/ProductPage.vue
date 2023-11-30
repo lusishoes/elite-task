@@ -30,8 +30,7 @@
     </div>
     <div class="goods-list">
       <GoodsElement 
-      :isVisiblePopup="isVisiblePopup"
-      :setPopupVisible="setPopupVisible"/>
+      />
     </div>
   </div>
 </template>
@@ -42,16 +41,7 @@ import { useElementChosen } from "../stores/elementChosenStore";
 import SelectedElement from "./SelectedElement.vue";
 import GoodsElement from './GoodsElement.vue';
 const elementChosen = useElementChosen();
-const props = defineProps({
-  isVisiblePopup: {
-    type: Boolean,
-    required: true,
-  },
-  setPopupVisible: {
-    type: Function,
-    required: true,
-  },
-});
+
 </script>
 
 <style scoped>
