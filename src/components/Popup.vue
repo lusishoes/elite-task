@@ -21,7 +21,8 @@
             </div>
           </div>
           <img
-            src="../images/1.png"
+            :src="popupStore.cardInfo?.img"
+            @click="console.log(popupStore.cardInfo?.img)"
             alt="item"
             class="modal-content__item-image_element"
           />
@@ -128,6 +129,7 @@
 <script setup>
 import { usePopupStore } from "../stores/popupStore";
 const popupStore = usePopupStore();
+// const productObj = popupStore.cardInfo;
 </script>
 <style scoped>
 .item-elem-description {

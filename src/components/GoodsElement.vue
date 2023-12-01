@@ -1,5 +1,5 @@
 <template>
-  <article class="goods-item" >
+  <article class="goods-item">
     <div
       class="goods-item__img-block"
       @mouseenter="showBtn = true"
@@ -18,18 +18,29 @@
         class="goods-item__heart-icon"
         alt="arrow"
         src="../images/icons/emptyheart.svg"
+        @click="console.log(popupStore.cardInfo)"
       />
-      <div class="goods-item-popup-opener"  :class="{ show__popup: showBtn }" @click="popupStore.togglePopup(true)">
+      <div
+        class="goods-item-popup-opener"
+        :class="{ show__popup: showBtn }"
+        @click="popupStore.togglePopup(true); popupStore.handleSetPopupInfo(product)"
+      >
         <p class="goods-item__popup-description">Подробнее</p>
       </div>
       <div class="goods-items-tags">
         <div class="goods-items-tags-hit" :class="{ show__category: hit }">
           <p class="goods-items-tags-hit_text">Хит</p>
         </div>
-        <div class="goods-items-tags-hit_new" :class="{ show__category: latest }">
+        <div
+          class="goods-items-tags-hit_new"
+          :class="{ show__category: latest }"
+        >
           <p class="goods-items-tags-hit_text">Новинка</p>
         </div>
-        <div class="goods-items-tags-freezing" :class="{ show__category: freeze }">
+        <div
+          class="goods-items-tags-freezing"
+          :class="{ show__category: freeze }"
+        >
           <p class="goods-items-tags-hit_text">Заморозка</p>
         </div>
       </div>
@@ -69,36 +80,35 @@ const showBtn = ref(false);
 import { usePopupStore } from "../stores/popupStore";
 const popupStore = usePopupStore();
 const props = defineProps({
-  name:  {
+  name: {
     type: String,
     required: true,
   },
-  price:  {
+  price: {
     type: Number,
     required: true,
   },
-  hit:  {
+  hit: {
     type: Boolean,
     required: true,
   },
-  latest:  {
+  latest: {
     type: Boolean,
     required: true,
   },
-  freeze:  {
+  freeze: {
     type: Boolean,
     required: true,
   },
-  img:  {
+  img: {
     type: String,
     required: true,
   },
   product: {
     type: Object,
     required: true,
-  }
+  },
 });
-
 </script>
 
 <style scoped>
