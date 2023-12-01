@@ -29,7 +29,16 @@
       />
     </div>
     <div class="goods-list">
-      <GoodsElement 
+      <GoodsElement
+          v-for="product of ItemStore.products"
+          :key="product.id"
+          :price="product.price"
+          :name="product.name"
+          :hit="product.hit"
+          :latest="product.latest"
+          :freeze="product.freeze"
+          :img="product.img"
+          :product="product"
       />
     </div>
   </div>
@@ -38,9 +47,11 @@
 <script setup>
 import SelectorItem from "./SelectorItem.vue";
 import { useElementChosen } from "../stores/elementChosenStore";
+import { useItemStore } from "../stores/ItemsStore";
 import SelectedElement from "./SelectedElement.vue";
 import GoodsElement from './GoodsElement.vue';
 const elementChosen = useElementChosen();
+const ItemStore = useItemStore();
 
 </script>
 
@@ -125,5 +136,7 @@ const elementChosen = useElementChosen();
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 20px;
 }
 </style>

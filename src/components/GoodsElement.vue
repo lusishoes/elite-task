@@ -13,7 +13,7 @@
         />
         <p class="goods-items-raiting__text">4.6</p>
       </div>
-      <img class="goods-item__img-element" alt="arrow" src="../images/1.png" />
+      <img class="goods-item__img-element" alt="arrow" :src="img" />
       <img
         class="goods-item__heart-icon"
         alt="arrow"
@@ -23,13 +23,13 @@
         <p class="goods-item__popup-description">Подробнее</p>
       </div>
       <div class="goods-items-tags">
-        <div class="goods-items-tags-hit">
+        <div class="goods-items-tags-hit" :class="{ show__category: hit }">
           <p class="goods-items-tags-hit_text">Хит</p>
         </div>
-        <div class="goods-items-tags-hit_new">
+        <div class="goods-items-tags-hit_new" :class="{ show__category: latest }">
           <p class="goods-items-tags-hit_text">Новинка</p>
         </div>
-        <div class="goods-items-tags-freezing">
+        <div class="goods-items-tags-freezing" :class="{ show__category: freeze }">
           <p class="goods-items-tags-hit_text">Заморозка</p>
         </div>
       </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="goods-item__description">
       <h2 class="goods-item__description-title">
-        Индейка, филе грудки на подложке замороженное "Индилайт"
+        {{ name }}
       </h2>
       <p class="goods-item__description-characteristics">300 г · Германия</p>
     </div>
@@ -50,7 +50,7 @@
       <div class="goods-item__price">
         <p class="goods-item__price-discount">110 ₽</p>
         <div class="goods-price-current__price">
-          <p class="goods-item__price-current-price">496 ₽</p>
+          <p class="goods-item__price-current-price">{{ price }} ₽</p>
           <p class="goods-item-unit">/ кг</p>
         </div>
       </div>
@@ -68,7 +68,36 @@ import { ref } from "vue";
 const showBtn = ref(false);
 import { usePopupStore } from "../stores/popupStore";
 const popupStore = usePopupStore();
-
+const props = defineProps({
+  name:  {
+    type: String,
+    required: true,
+  },
+  price:  {
+    type: Number,
+    required: true,
+  },
+  hit:  {
+    type: Boolean,
+    required: true,
+  },
+  latest:  {
+    type: Boolean,
+    required: true,
+  },
+  freeze:  {
+    type: Boolean,
+    required: true,
+  },
+  img:  {
+    type: String,
+    required: true,
+  },
+  product: {
+    type: Object,
+    required: true,
+  }
+});
 
 </script>
 
@@ -165,14 +194,14 @@ const popupStore = usePopupStore();
 .goods-items-tags-hit {
   background-color: #ff8c22;
   border-radius: 6px;
-  display: inline-block;
+  display: none;
   padding: 6px 8px;
 }
 
 .goods-items-tags-hit_new {
   background-color: #10b145;
   border-radius: 6px;
-  display: inline-block;
+  display: none;
   padding: 6px 8px;
   margin-left: 6px;
 }
@@ -180,7 +209,7 @@ const popupStore = usePopupStore();
 .goods-items-tags-freezing {
   background-color: #22c6ea;
   border-radius: 6px;
-  display: inline-block;
+  display: none;
   padding: 6px 8px;
   margin-left: 6px;
 }
@@ -255,6 +284,10 @@ const popupStore = usePopupStore();
   font-weight: 500;
   line-height: 120%;
   color: #f3223c;
+}
+
+.show__category {
+  display: inline-block;
 }
 
 .show__popup {

@@ -285,7 +285,7 @@ const popupStore = usePopupStore();
   flex-direction: row;
   column-gap: 6px;
   justify-content: center;
-  padding: 4px 6px;
+  padding: 4px 0;
   border-radius: 40px;
   background: linear-gradient(81deg, #FF782D 4.95%, #F32254 72.54%);
   width: 51px;
@@ -411,7 +411,7 @@ const popupStore = usePopupStore();
   border-radius: 12px;
   background: #fff;
   width: 750px;
-  height: 547px;
+  /* height: 547px; */
   flex-shrink: 0;
   position: relative;
   z-index: 3;
