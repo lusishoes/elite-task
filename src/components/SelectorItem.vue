@@ -21,6 +21,7 @@ const props = defineProps({
   padding: 12px;
   background-color: #F2F3F5;
   display: block;
+  border-radius: 6px;
 }
 
 .selectorItem__text {
