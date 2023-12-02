@@ -39,6 +39,8 @@
           :freeze="product.freeze"
           :img="product.img"
           :product="product"
+          :isBonus="product.isBonus"
+          :isAddToCard="product.isAddToCard"
       />
     </div>
   </div>

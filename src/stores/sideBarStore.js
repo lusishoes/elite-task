@@ -1,6 +1,6 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const useSideBarItem = defineStore("sideBarItem", {
+export const useSideBarItem = defineStore('sideBarItem', {
   state: () => ({
     sideBarItem: [
       {
@@ -41,7 +41,7 @@ export const useSideBarItem = defineStore("sideBarItem", {
         isChosen: false,
       },
       {
-        id:2,
+        id: 2,
         text: 'Сербия',
         isChosen: false,
       },

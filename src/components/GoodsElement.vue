@@ -59,7 +59,17 @@
     </div>
     <div class="goods-item__buy-block">
       <div class="goods-item__price">
-        <p class="goods-item__price-discount">110 ₽</p>
+        <div class="item-content-bonus" v-if="isBonus == true">
+              <p class="item-content-bonus-text">
+                +248
+              </p>
+              <img
+                class="as"
+                alt="arrow"
+                src="../images/icons/bonus.svg"
+              />
+          </div>
+          <p class="goods-item__price-discount" v-else>110 ₽</p>
         <div class="goods-price-current__price">
           <p class="goods-item__price-current-price">{{ price }} ₽</p>
           <p class="goods-item-unit">/ кг</p>
@@ -69,7 +79,27 @@
         class="goods-item__buy-block-img"
         alt="arrow"
         src="../images/icons/add-btn.svg"
+        v-if="ItemStore.checkPresenceObj(product) === -1"
+        @click="ItemStore.addToCart(product);"
       />
+    </div>
+    <div class="goods-item__add-to-cart"  v-if="ItemStore.checkPresenceObj(product) === 0">
+      <div class="goods-item-change-quantity" @click="ItemStore.incrementItem(product)">
+        <img
+          class="goods-item-quantity-img"
+          alt="minus"
+          src="../images/icons/minus.svg"
+           
+        />
+      </div>
+      <p class="goods-item-quantity-weight">{{  }}</p>
+      <div class="goods-item-change-quantity"  @click="ItemStore.decrementQ(product)">
+        <img
+          class="goods-item-quantity-img"
+          alt="minus"
+          src="../images/icons/plus.svg"
+        />
+      </div>
     </div>
   </article>
 </template>
@@ -77,8 +107,13 @@
 <script setup>
 import { ref } from "vue";
 const showBtn = ref(false);
+
 import { usePopupStore } from "../stores/popupStore";
 const popupStore = usePopupStore();
+import { useItemStore } from "../stores/ItemsStore";
+
+const ItemStore = useItemStore();
+
 const props = defineProps({
   name: {
     type: String,
@@ -108,10 +143,73 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  isBonus: {
+    type: Boolean,
+    required: true,
+  },
+  isAddToCard: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <style scoped>
+
+.goods-item__buy-block-img {
+  cursor: pointer;
+}
+.goods-item-change-quantity {
+  cursor: pointer;
+}
+
+.goods-item-quantity-weight {
+  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: #0C0C0D;
+}
+
+.goods-item__add-to-cart {
+  display: flex;
+  width: 208px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.goods-item-change-quantity {
+  width: 44px;
+  height: 44px; 
+  background-color: rgba(93, 136, 150, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-content-bonus-text {
+  margin: 0;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+
+.item-content-bonus {
+  display: flex;
+  flex-direction: row;
+  column-gap: 6px;
+  justify-content: center;
+  padding: 4px 0;
+  border-radius: 40px;
+  background: linear-gradient(81deg, #FF782D 4.95%, #F32254 72.54%);
+  width: 51px;
+  margin-bottom: 4px;
+}
 .goods-item__buy-block {
   display: flex;
   flex-direction: row;
@@ -239,6 +337,7 @@ const props = defineProps({
 }
 .goods-item__img-block {
   position: relative;
+
 }
 .goods-item__img-element {
   width: 240px;

@@ -1,6 +1,6 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const usePopupStore = defineStore("popup", {
+export const usePopupStore = defineStore('popup', {
   state: () => ({
     isOpenPopup: false,
     cardInfo: {},
@@ -11,6 +11,6 @@ export const usePopupStore = defineStore("popup", {
     },
     handleSetPopupInfo(el) {
       this.cardInfo = el;
-    }
-  }
+    },
+  },
 });

@@ -25,121 +25,114 @@ const { min, max, step, minValue, maxValue } = defineProps({
   },
   measure: {
     type: String,
-    default: 'до'
-  }
+    default: "до",
+  },
 });
 
-// define emits for the slider component
 const emit = defineEmits(["update:minValue", "update:maxValue"]);
 
-// define refs for the slider element and the slider values
 const slider = ref(null);
 const inputMin = ref(null);
 const inputMax = ref(null);
 const sliderMinValue = ref(minValue);
 const sliderMaxValue = ref(maxValue);
 
-// function to get the percentage of a value between the min and max values
 const getPercent = (value, min, max) => {
   return ((value - min) / (max - min)) * 100;
 };
 
-// function to get the difference between the min and max values
-// const sliderDifference = computed(() => {
-//   return Math.abs(sliderMaxValue.value - sliderMinValue.value);
-// });
-
-// function to set the css variables for width, left and right
 const setCSSProps = (left, right) => {
   slider.value.style.setProperty("--progressLeft", `${left}%`);
   slider.value.style.setProperty("--progressRight", `${right}%`);
 };
 
-// watchEffect to emit the updated values, and update the css variables
-// when the slider values change
 watchEffect(() => {
   if (slider.value) {
-    // emit slidet values when updated
     emit("update:minValue", sliderMinValue.value);
     emit("update:maxValue", sliderMaxValue.value);
 
-    // calculate values in percentages
     const leftPercent = getPercent(sliderMinValue.value, min, max);
     const rightPercent = 100 - getPercent(sliderMaxValue.value, min, max);
 
-    // set the CSS variables
     setCSSProps(leftPercent, rightPercent);
   }
 });
 
-// validation sliderMinValue do not greater than sliderMaxValue and opposite
 const onInput = ({ target }) => {
-  if (target.name === 'min') {
+  if (target.name === "min") {
     target.value > sliderMaxValue.value
-      ? target.value = sliderMaxValue.value
-      : sliderMinValue.value = parseFloat(target.value);
+      ? (target.value = sliderMaxValue.value)
+      : (sliderMinValue.value = parseFloat(target.value));
   }
 
-  if (target.name === 'max') {
+  if (target.name === "max") {
     target.value < sliderMinValue.value
-      ? target.value = sliderMinValue.value
-      : sliderMaxValue.value = parseFloat(target.value);
+      ? (target.value = sliderMinValue.value)
+      : (sliderMaxValue.value = parseFloat(target.value));
   }
 };
-
 </script>
 <template>
   <div class="range-inputs">
     <div class="minmax-inputs">
       <div class="minmax-inputs-wrapper">
-        <p class="minmax-inputs-text">
-          от
-        </p>
-        <p class="minmax-inputs-price">
-         {{ measure }}
-        </p>
-        <input type="number" :step="step" v-model="sliderMinValue" class="minmax-input" :min="min" :max="max"/>
-
-      </div>
-      <div class="minmax-inputs-wrapper">
-        <p class="minmax-inputs-text">
-          от
-        </p>
+        <p class="minmax-inputs-text">от</p>
         <p class="minmax-inputs-price">
           {{ measure }}
         </p>
-        <input type="number" :step="step" v-model="sliderMaxValue" class="minmax-input" :min="min" :max="max"/>
+        <input
+          type="number"
+          :step="step"
+          v-model="sliderMinValue"
+          class="minmax-input"
+          :min="min"
+          :max="max"
+        />
       </div>
+      <div class="minmax-inputs-wrapper">
+        <p class="minmax-inputs-text">от</p>
+        <p class="minmax-inputs-price">
+          {{ measure }}
+        </p>
+        <input
+          type="number"
+          :step="step"
+          v-model="sliderMaxValue"
+          class="minmax-input"
+          :min="min"
+          :max="max"
+        />
+      </div>
+    </div>
+    <div ref="slider" class="custom-slider minmax">
+      <div class="minmax-indicator"></div>
+      <input
+        ref="inputMin"
+        type="range"
+        name="min"
+        id="min"
+        :min="min"
+        :max="max"
+        :value="minValue"
+        :step="step"
+        @input="onInput"
+        class="indicator-input"
+      />
+
+      <input
+        ref="inputMax"
+        type="range"
+        name="max"
+        id="max"
+        :min="min"
+        :max="max"
+        :value="maxValue"
+        :step="step"
+        @input="onInput"
+        class="indicator-input"
+      />
+    </div>
   </div>
-  <div ref="slider" class="custom-slider minmax">
-    <div class="minmax-indicator"></div>
-    <input
-      ref="inputMin"
-      type="range"
-      name="min"
-      id="min"
-      :min="min"
-      :max="max"
-      :value="minValue"
-      :step="step"
-      @input="onInput"
-      class="indicator-input"
-    />
-    
-    <input
-      ref="inputMax"
-      type="range"
-      name="max"
-      id="max"
-      :min="min"
-      :max="max"
-      :value="maxValue"
-      :step="step"
-      @input="onInput"
-      class="indicator-input"
-    />
-  </div>
-</div>
 </template>
 <style scoped>
 .minmax-inputs-text {
@@ -201,7 +194,6 @@ a,
   z-index: 0;
   height: 100%;
   pointer-events: none;
-
 }
 
 /* ::before element to replace the slider track */
@@ -229,7 +221,7 @@ a,
   width: var(--thumbRadius);
   height: var(--thumbRadius);
   margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2);
-  background: #FFFFFF;
+  background: #ffffff;
   /* border: 1px solid  #00865a; */
   box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.2);
   border-radius: 999px;
@@ -264,7 +256,7 @@ a,
   position: relative;
   height: var(--trackHeight);
   /* background: #005a3c; */
-  background: #BDBDBD;
+  background: #bdbdbd;
   border-radius: 999px;
   margin-top: 15px;
   /* margin: 0.5rem 0; */
@@ -283,7 +275,7 @@ a,
 .custom-slider .minmax-indicator::before {
   content: "";
   position: absolute;
-  background: #46A175;
+  background: #46a175;
   height: 100%;
   left: var(--progressLeft);
   right: var(--progressRight);
@@ -321,22 +313,22 @@ a,
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 120%; 
+  line-height: 120%;
   color: #858585;
   outline: none;
-  text-align:center;
+  text-align: center;
   margin-left: 7px;
 }
 
 /* .minmax-input::-webkit-outer-spin-button, */
 .minmax-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 /* .minmax-input:nth-child(0) {
   margin-left: 0;
 } */
 
-.minmax-input:last-child{
+.minmax-input:last-child {
   margin-left: 0;
 }
 </style>

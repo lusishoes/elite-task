@@ -63,7 +63,7 @@
               <p class="item-price-text">366 ₽ <span class="item-content-measure">/ кг</span></p>
             </div>
             <div class="item-content-price-description">
-              <p class="item-price-text-description">366 ₽ <span class="item-price-text-description">/ кг</span></p>
+              <p class="item-price-text-description">2456 ₽ <span class="item-price-text-description">/ кор</span></p>
             </div>
           </div>
           <div class="add-item-tocart">
