@@ -12,6 +12,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/1.png',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 2,
@@ -22,6 +23,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/2.png',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 3,
@@ -32,6 +34,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/3.png',
         isBonus: true,
+        weigth: 0.3,
       },
       {
         id: 4,
@@ -42,6 +45,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: false,
         img: '../src/images/4.png',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 5,
@@ -52,6 +56,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: false,
         img: '../src/images/5.jpeg',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 6,
@@ -62,6 +67,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: false,
         img: '../src/images/6.png',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 7,
@@ -72,6 +78,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/7.png',
         isBonus: true,
+        weigth: 0.3,
       },
       {
         id: 8,
@@ -82,6 +89,7 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/8.png',
         isBonus: false,
+        weigth: 0.3,
       },
       {
         id: 9,
@@ -92,42 +100,30 @@ export const useItemStore = defineStore('itemStore', {
         freeze: true,
         img: '../src/images/9.png',
         isBonus: false,
+        weigth: 0.3,
       },
     ],
     cartItems: [],
     popupElement: {},
   }),
-  getters: {
+  actions: {
     countCartItems() {
       return this.cartItems.length;
     },
-  },
-  actions: {
     checkPresenceObj(item) {
       return this.cartItems.findIndex((product) => product.id === item.id);
     },
-    addToCart(item) {
-      const index = this.cartItems.findIndex((product) => product.id === item.id);
-      if (index !== -1) {
-        this.products[index].quantity += 1;
-      } else {
-        item.quantity = 1;
-        this.cartItems.push(item);
-      }
+    countCurrentItemCountity(item) {
+      return (this.cartItems.filter((currentItem) => currentItem === item).length * item.weigth).toFixed(1);
     },
-    incrementItem(item) {
-      const index = this.cartItems.findIndex((product) => product.id === item.id);
-      if (index !== -1) {
-        this.cartItems[index].quantity += 1;
-      }
+    addToCart(item) {
+      this.cartItems.push(item);
     },
     decrementQ(item) {
       const index = this.cartItems.findIndex((product) => product.id === item.id);
       if (index !== -1) {
-        this.cartItems[index].quantity -= 1;
-        if (this.cartItems[index].quantity === 0) {
-          this.cartItems = this.cartItems.filter((product) => product.id !== item.id);
-        }
+        const indexElem = this.cartItems.indexOf(item)
+        this.cartItems.splice(indexElem, 1);
       }
     },
   },

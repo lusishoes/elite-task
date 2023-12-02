@@ -369,6 +369,7 @@ const popupStore = usePopupStore();
 
 .modal-content__item-image_element {
   width: 100%;
+  border-radius: 9px;
 }
 
 .goods-items-tags-hit_text {

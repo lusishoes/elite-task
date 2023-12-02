@@ -51,7 +51,8 @@
         <div class="img-slider-element"></div>
       </div>
     </div>
-    <div class="goods-item__description">
+    <div class="goods-item__wrapper_block" >
+      <div class="goods-item__description">
       <h2 class="goods-item__description-title">
         {{ name }}
       </h2>
@@ -83,23 +84,23 @@
         @click="ItemStore.addToCart(product);"
       />
     </div>
-    <div class="goods-item__add-to-cart"  v-if="ItemStore.checkPresenceObj(product) === 0">
-      <div class="goods-item-change-quantity" @click="ItemStore.incrementItem(product)">
+    <div class="goods-item__add-to-cart"  v-if="ItemStore.checkPresenceObj(product) !== -1">
+      <div class="goods-item-change-quantity" @click="ItemStore.decrementQ(product)">
         <img
           class="goods-item-quantity-img"
           alt="minus"
           src="../images/icons/minus.svg"
-           
         />
       </div>
-      <p class="goods-item-quantity-weight">{{  }}</p>
-      <div class="goods-item-change-quantity"  @click="ItemStore.decrementQ(product)">
+      <p class="goods-item-quantity-weight">{{ ItemStore.countCurrentItemCountity(product) }} кг</p>
+      <div class="goods-item-change-quantity"  @click="ItemStore.addToCart(product)">
         <img
           class="goods-item-quantity-img"
-          alt="minus"
+          alt="plus"
           src="../images/icons/plus.svg"
         />
       </div>
+    </div>
     </div>
   </article>
 </template>
