@@ -88,11 +88,12 @@ const ItemStore = useItemStore();
 
 .header__catalog {
   background-color: #F3223C;
+  opacity: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 12px 38px 16px;
-  /* // z-index: 1; */
+  z-index: 3;
   height: 42px;
   padding: 0 12px ;
   border-radius: 9px;
@@ -108,6 +109,7 @@ const ItemStore = useItemStore();
   line-height: 120%; /* 18px */
   color: #FFF;
   margin-left: 12px;
+  z-index: 4;
 }
 
 .header_form {
@@ -129,7 +131,7 @@ const ItemStore = useItemStore();
   width: 526px;
   left: -11px;
   outline:none;
-  z-index: -1;
+  z-index: 2;
 }
 
 .header_form-lupa {

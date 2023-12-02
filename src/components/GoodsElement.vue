@@ -22,10 +22,13 @@
       />
       <div
         class="goods-item-popup-opener"
-        :class="{ show__popup: showBtn }"
+        :class="{ 
+          'show__popup': showBtn, 
+          'description__add': ItemStore.checkPresenceObj(product) !== -1 
+        }"
         @click="popupStore.togglePopup(true); popupStore.handleSetPopupInfo(product)"
       >
-        <p class="goods-item__popup-description">Подробнее</p>
+        <p class="goods-item__popup-description" >Подробнее</p>
       </div>
       <div class="goods-items-tags" :class="{ tags__add: ItemStore.checkPresenceObj(product) !== -1 }">
         <div class="goods-items-tags-hit" :class="{ show__category: hit }">
@@ -157,11 +160,15 @@ const props = defineProps({
 
 <style scoped>
 
+.description__add {
+  bottom: 95px !important;
+}
+
 .slider__add {
-  bottom: 48px !important;
+  bottom: 52px !important;
 }
 .tags__add {
-  bottom: 60px !important;
+  bottom: 58px !important;
 }
 
 .goods-item__wrapper_block {
@@ -170,7 +177,7 @@ const props = defineProps({
 
 .wrapper__add {
   position: relative;
-  bottom: 60px
+  bottom: 65px
 }
 
 .goods-item__buy-block-img {

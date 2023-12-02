@@ -43,6 +43,26 @@
           :isAddToCard="product.isAddToCard"
       />
     </div>
+    <!-- <div class="goods-loader"> -->
+      <div class="goods-loader-btn">
+        Загрузить еще
+      </div>
+      <div class="goods-pages">
+        <div class="goods-loader-pages">
+          <p class="goods-loader-page-choisen">1</p>
+          <p class="goods-loader-page">2</p>
+          <p class="goods-loader-page">3</p>
+        </div>
+        <div class="goods-loader-next-page">
+          <p class="goods-loader-next-page-text">Дальше</p>
+          <img
+            class="item-title-rate__img"
+            alt="arrow"
+            src="../images/icons/right-arrow.svg"
+          />
+        </div>
+      </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -58,6 +78,73 @@ const ItemStore = useItemStore();
 </script>
 
 <style scoped>
+
+.goods-pages {
+  display: flex;
+  flex-direction: row;
+  column-gap: 25px;
+  margin-left: 481px;
+  margin-bottom: 76px;
+}
+
+.goods-loader-next-page-text {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 135%;
+  color: #858585;
+  margin: 0;
+}
+
+.goods-loader-next-page {
+  display: flex;
+  flex-direction: row;
+  column-gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+.goods-loader-page-choisen {
+  color: #0C0C0D;
+  margin: 0;
+}
+
+.goods-loader-page {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  color: #858585;
+  margin: 0;
+}
+
+.goods-loader-pages {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .goods-loader {
+  
+} */
+
+.goods-loader-btn {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #FFFFFF;
+  border-radius: 9px;
+  background: #F3223C;
+  width: 181px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
+  margin: 44px auto 20px;
+
+}
 .products-title {
   width: calc(100% - 220px);
   display: flex;

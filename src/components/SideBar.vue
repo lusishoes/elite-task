@@ -15,7 +15,6 @@
       <SideBarTitle title="Направления меню" :arrow="true" />
       <div class="sidebar-choisen-items-block">
         <div class="sidebar-block-list">
-          
           <div class="sidebar-choisen-items">
             <ChosenItem
               v-for="sideBarItem of sideBarStore.sideBarItem"
@@ -108,7 +107,7 @@ const sideBarStore = useSideBarItem();
   color: #858585;
   border-radius: 6px;
   display: flex;
-  /* padding: 14px 45px; */
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   width: 220px;

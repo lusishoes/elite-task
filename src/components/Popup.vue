@@ -13,11 +13,14 @@
       <div class="modal-content__item-info">
         <div class="modal-content__item-image">
           <div class="modal-content-selectors">
-            <div class="goods-items-tags-hit">
+            <div class="goods-items-tags-hit" :class="{ show__category: popupStore.cardInfo?.hit }">
               <p class="goods-items-tags-hit_text">Хит</p>
             </div>
-            <div class="goods-items-tags-hit_new">
+            <div class="goods-items-tags-hit_new" :class="{ show__category: popupStore.cardInfo?.latest }">
               <p class="goods-items-tags-hit_text">Новинка</p>
+            </div>
+            <div class="goods-items-tags-freezing" :class="{ show__category: popupStore.cardInfo?.freeze }">
+              <p class="goods-items-tags-hit_text">Заморозка</p>
             </div>
           </div>
           <img
@@ -362,7 +365,7 @@ const popupStore = usePopupStore();
 .goods-items-tags-hit {
   background-color: #ff8c22;
   border-radius: 6px;
-  display: inline-block;
+  display: none;
   padding: 6px 8px;
   /* position: absolute; */
 }
@@ -426,7 +429,7 @@ const popupStore = usePopupStore();
 .goods-items-tags-hit_new {
   background-color: #10b145;
   border-radius: 6px;
-  display: inline-block;
+  display: none;
   padding: 6px 8px;
   margin-left: 6px;
 }
@@ -439,5 +442,16 @@ const popupStore = usePopupStore();
   background: none;
   border: none; */
   cursor: pointer;
+}
+.goods-items-tags-freezing {
+  background-color: #22c6ea;
+  border-radius: 6px;
+  display: none;
+  padding: 6px 8px;
+  margin-left: 6px;
+} 
+
+.show__category {
+  display: inline-block;
 }
 </style>
