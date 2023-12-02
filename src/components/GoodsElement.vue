@@ -27,7 +27,7 @@
       >
         <p class="goods-item__popup-description">Подробнее</p>
       </div>
-      <div class="goods-items-tags">
+      <div class="goods-items-tags" :class="{ tags__add: ItemStore.checkPresenceObj(product) !== -1 }">
         <div class="goods-items-tags-hit" :class="{ show__category: hit }">
           <p class="goods-items-tags-hit_text">Хит</p>
         </div>
@@ -44,14 +44,14 @@
           <p class="goods-items-tags-hit_text">Заморозка</p>
         </div>
       </div>
-      <div class="img-slider">
+      <div class="img-slider" :class="{ slider__add: ItemStore.checkPresenceObj(product) !== -1 }">
         <div class="img-slider-element"></div>
         <div class="img-slider-element img-slider-element__chosen"></div>
         <div class="img-slider-element"></div>
         <div class="img-slider-element"></div>
       </div>
     </div>
-    <div class="goods-item__wrapper_block" >
+    <div class="goods-item__wrapper_block" :class="{ wrapper__add: ItemStore.checkPresenceObj(product) !== -1 }">
       <div class="goods-item__description">
       <h2 class="goods-item__description-title">
         {{ name }}
@@ -156,6 +156,22 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
+.slider__add {
+  bottom: 48px !important;
+}
+.tags__add {
+  bottom: 60px !important;
+}
+
+.goods-item__wrapper_block {
+  background-color: #FFFFFF;
+}
+
+.wrapper__add {
+  position: relative;
+  bottom: 60px
+}
 
 .goods-item__buy-block-img {
   cursor: pointer;
