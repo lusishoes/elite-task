@@ -70,7 +70,7 @@ import { useItemStore } from "../stores/ItemsStore";
 const ItemStore = useItemStore();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   box-shadow: 0px 2px 18px 0px rgba(12, 12, 13, 0.1);
 }

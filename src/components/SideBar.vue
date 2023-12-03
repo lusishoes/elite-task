@@ -87,7 +87,7 @@ const sliderMax1 = ref(480);
 const sideBarStore = useSideBarItem();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sidebar-block__list-container {
   display: flex;
   flex-direction: row;

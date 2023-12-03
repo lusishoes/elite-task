@@ -181,7 +181,8 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 .description__add {
   bottom: 95px !important;
 }
@@ -194,7 +195,7 @@ const props = defineProps({
 }
 
 .goods-item__wrapper_block {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .wrapper__add {
@@ -447,4 +448,5 @@ const props = defineProps({
 .show__popup {
   display: block;
 }
+
 </style>

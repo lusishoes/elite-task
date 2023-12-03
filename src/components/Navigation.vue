@@ -20,7 +20,7 @@
 
 <script setup></script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navigation {
   display: flex;
   flex-direction: row;

@@ -74,7 +74,7 @@ const elementChosen = useElementChosen();
 const ItemStore = useItemStore();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .products__pages {
   display: flex;
   flex-direction: row;

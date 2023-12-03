@@ -29,7 +29,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sidebar-container {
   display: flex;
   flex-direction: row;

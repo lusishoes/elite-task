@@ -137,7 +137,7 @@ const onInput = ({ target }) => {
     </div>
   </div>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .inputs__minmax-text {
   position: absolute;
   font-size: 14px;

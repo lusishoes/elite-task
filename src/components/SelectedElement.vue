@@ -21,7 +21,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .selected-element {
   padding: 12px;
   background-color: rgba(70, 161, 117, 0.16);

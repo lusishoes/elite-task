@@ -10,7 +10,7 @@ import SideBar from "./SideBar.vue";
 import ProductPage from "./ProductPage.vue";
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   display: flex;
   flex-direction: row;

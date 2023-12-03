@@ -128,7 +128,7 @@ import { usePopupStore } from "../stores/popupStore";
 const popupStore = usePopupStore();
 // const productObj = popupStore.cardInfo;
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .popup__item-elem__description {
   font-size: 13px;
   font-style: normal;

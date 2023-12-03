@@ -16,7 +16,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .selectorItem {
   padding: 12px;
   background-color: #f2f3f5;
