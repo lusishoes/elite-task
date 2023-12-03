@@ -1,28 +1,26 @@
 <template>
- <div class="navigation">
-  <div class="navigation-container">
-    <p class="navigation-text">Главная</p>
-    <img 
-      src="../images/icons/right-arrow.svg"
-      alt="right-arrow"
-      class="navigation-arrow"
-    />
-    <p class="navigation-text">Каталог</p>
-    <img 
-      src="../images/icons/right-arrow.svg"
-      alt="right-arrow"
-      class="navigation-arrow"
-    />
-    <p class="navigation-text">Мясо. Птица. Фарш</p>
- </div>
-</div>
+  <div class="navigation">
+    <div class="navigation__container">
+      <p class="navigation__text">Главная</p>
+      <img
+        src="../images/icons/right-arrow.svg"
+        alt="right-arrow"
+        class="navigation__arrow"
+      />
+      <p class="navigation__text">Каталог</p>
+      <img
+        src="../images/icons/right-arrow.svg"
+        alt="right-arrow"
+        class="navigation__arrow"
+      />
+      <p class="navigation__text">Мясо. Птица. Фарш</p>
+    </div>
+  </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped> 
+<style scoped>
 .navigation {
   display: flex;
   flex-direction: row;
@@ -32,19 +30,19 @@
   max-width: 1280px;
 }
 
-.navigation-container {
+.navigation__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 315px;
 }
 
-.navigation-text {
+.navigation__text {
   margin: 0;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
   color: #858585;
-} 
+}
 </style>

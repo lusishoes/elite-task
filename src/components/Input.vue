@@ -73,39 +73,42 @@ const onInput = ({ target }) => {
 };
 </script>
 <template>
-  <div class="range-inputs">
-    <div class="minmax-inputs">
-      <div class="minmax-inputs-wrapper">
-        <p class="minmax-inputs-text">от</p>
-        <p class="minmax-inputs-price">
+  <div class="inputs">
+    <div class="inputs__minmax">
+      <div class="inputs__minmax-wrapper">
+        <p class="inputs__minmax-text">от</p>
+        <p class="inputs__minmax-price">
           {{ measure }}
         </p>
         <input
           type="number"
           :step="step"
           v-model="sliderMinValue"
-          class="minmax-input"
+          class="input__minmax"
           :min="min"
           :max="max"
         />
       </div>
-      <div class="minmax-inputs-wrapper">
-        <p class="minmax-inputs-text">от</p>
-        <p class="minmax-inputs-price">
+      <div class="inputs__minmax-wrapper">
+        <p class="inputs__minmax-text">от</p>
+        <p class="inputs__minmax-price">
           {{ measure }}
         </p>
         <input
           type="number"
           :step="step"
           v-model="sliderMaxValue"
-          class="minmax-input"
+          class="input__minmax"
           :min="min"
           :max="max"
         />
       </div>
     </div>
-    <div ref="slider" class="custom-slider minmax">
-      <div class="minmax-indicator"></div>
+    <div
+      ref="slider"
+      class="inputs__custom-slider inputs__custom-slider__minmax"
+    >
+      <div class="inputs__minmax-indicator"></div>
       <input
         ref="inputMin"
         type="range"
@@ -116,7 +119,7 @@ const onInput = ({ target }) => {
         :value="minValue"
         :step="step"
         @input="onInput"
-        class="indicator-input"
+        class="inputs__indicator-input"
       />
 
       <input
@@ -129,13 +132,13 @@ const onInput = ({ target }) => {
         :value="maxValue"
         :step="step"
         @input="onInput"
-        class="indicator-input"
+        class="inputs__indicator-input"
       />
     </div>
   </div>
 </template>
 <style scoped>
-.minmax-inputs-text {
+.inputs__minmax-text {
   position: absolute;
   font-size: 14px;
   font-style: normal;
@@ -146,7 +149,7 @@ const onInput = ({ target }) => {
   bottom: -3px;
 }
 
-.minmax-inputs-price {
+.inputs__minmax-price {
   position: absolute;
   font-size: 14px;
   font-style: normal;
@@ -157,13 +160,12 @@ const onInput = ({ target }) => {
   right: 16px;
 }
 
-.range-inputs {
+.inputs {
   width: 220px;
   margin-top: 20px;
 }
-.minmax-inputs-wrapper {
+.inputs__minmax-wrapper {
   position: relative;
-  /* text-align: center; */
 }
 
 a,
@@ -179,16 +181,14 @@ a,
   }
 }
 
-.custom-slider {
+.inputs__custom-slider {
   --trackHeight: 0.35rem;
   --thumbRadius: 1rem;
 }
 
-/* style the input element with type "range" */
-.indicator-input {
+.inputs__indicator-input {
   position: relative;
   appearance: none;
-  /* width: 107px; */
   background: none;
   border-radius: 999px;
   z-index: 0;
@@ -196,33 +196,28 @@ a,
   pointer-events: none;
 }
 
-/* ::before element to replace the slider track */
-.indicator-input::before {
+.inputs__indicator-input::before {
   content: "";
   display: block;
   position: absolute;
   width: var(--ProgressPercent, 100%);
   height: 100%;
-  /* background: #00865a; */
   border-radius: 999px;
-  /* background-color: red; */
 }
 
-/* `::-webkit-slider-runnable-track` targets the track (background) of a range slider in chrome and safari browsers. */
-.indicator-input::-webkit-slider-runnable-track {
+.inputs__indicator-input::-webkit-slider-runnable-track {
   appearance: none;
   background: #005a3c;
   height: var(--trackHeight);
   border-radius: 999px;
 }
 
-.indicator-input::-webkit-slider-thumb {
+.inputs__indicator-input::-webkit-slider-thumb {
   position: relative;
   width: var(--thumbRadius);
   height: var(--thumbRadius);
   margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2);
   background: #ffffff;
-  /* border: 1px solid  #00865a; */
   box-shadow: 2px 2px 5.5px rgba(0, 0, 0, 0.2);
   border-radius: 999px;
   pointer-events: all;
@@ -230,41 +225,33 @@ a,
   z-index: 1;
 }
 
-/* `::-moz-range-track` targets the track (background) of a range slider in Mozilla Firefox. */
-.indicator-input::-moz-range-track {
+.inputs__indicator-input::-moz-range-track {
   appearance: none;
-  /* background: #005a3c; */
   height: var(--trackHeight);
   border-radius: 999px;
 }
 
-.indicator-input::-moz-range-thumb {
+.inputs__indicator-input::-moz-range-thumb {
   position: relative;
   box-sizing: border-box;
   width: var(--thumbRadius);
   height: var(--thumbRadius);
   margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2);
-  /* background: #005a3c;
-  border: 1px solid  #00865a; */
   border-radius: 999px;
   pointer-events: all;
   appearance: none;
   z-index: 1;
 }
 
-.custom-slider.minmax {
+.inputs__custom-slider.inputs__custom-slider__minmax {
   position: relative;
   height: var(--trackHeight);
-  /* background: #005a3c; */
   background: #bdbdbd;
   border-radius: 999px;
   margin-top: 15px;
-  /* margin: 0.5rem 0; */
-  /* --progressLeft: 0%;
-  --progressRight: 0%; */
 }
 
-.custom-slider .minmax-indicator {
+.inputs__custom-slider .inputs__minmax-indicator {
   position: absolute;
   height: 100%;
   pointer-events: none;
@@ -272,7 +259,7 @@ a,
   right: var(--thumbRadius);
 }
 
-.custom-slider .minmax-indicator::before {
+.inputs__custom-slider .inputs__minmax-indicator::before {
   content: "";
   position: absolute;
   background: #46a175;
@@ -281,30 +268,32 @@ a,
   right: var(--progressRight);
 }
 
-.custom-slider.minmax input[type="range"] {
+.inputs__custom-slider.inputs__custom-slider__minmax input[type="range"] {
   position: absolute;
   width: calc(100% - var(--thumbRadius));
 }
 
-.custom-slider.minmax input[type="range"][name="max"] {
+.inputs__custom-slider.inputs__custom-slider__minmax
+  input[type="range"][name="max"] {
   left: var(--thumbRadius);
 }
 
-.custom-slider.minmax input[type="range"]::-webkit-slider-runnable-track {
+.inputs__custom-slider.inputs__custom-slider__minmax
+  input[type="range"]::-webkit-slider-runnable-track {
   background: none;
 }
 
-.custom-slider.minmax input[type="range"]::before {
+.inputs__custom-slider.inputs__custom-slider__minmax
+  input[type="range"]::before {
   display: none;
 }
 
-.minmax-inputs {
+.inputs__minmax {
   display: flex;
   justify-content: space-between;
 }
 
-.minmax-input {
-  /* width: 50px; */
+.input__minmax {
   background-color: rgba(93, 136, 150, 0.08);
   width: 102px;
   height: 37px;
@@ -320,15 +309,11 @@ a,
   margin-left: 7px;
 }
 
-/* .minmax-input::-webkit-outer-spin-button, */
-.minmax-input::-webkit-inner-spin-button {
+.input__minmax::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-/* .minmax-input:nth-child(0) {
-  margin-left: 0;
-} */
 
-.minmax-input:last-child {
+.input__minmax:last-child {
   margin-left: 0;
 }
 </style>

@@ -5,13 +5,13 @@
       @mouseenter="showBtn = true"
       @mouseleave="showBtn = false"
     >
-      <div class="goods-items-raiting">
+      <div class="goods-items__raiting">
         <img
-          class="goods-items-raiting__img-element"
+          class="goods-items__raiting-img-element"
           alt="arrow"
           src="../images/icons/yellow-star.svg"
         />
-        <p class="goods-items-raiting__text">4.6</p>
+        <p class="goods-items__raiting-text">4.6</p>
       </div>
       <img class="goods-item__img-element" alt="arrow" :src="img" />
       <img
@@ -21,89 +21,112 @@
         @click="console.log(popupStore.cardInfo)"
       />
       <div
-        class="goods-item-popup-opener"
-        :class="{ 
-          'show__popup': showBtn, 
-          'description__add': ItemStore.checkPresenceObj(product) !== -1 
+        class="goods-item__popup-opener"
+        :class="{
+          show__popup: showBtn,
+          description__add: ItemStore.checkPresenceObj(product) !== -1,
         }"
-        @click="popupStore.togglePopup(true); popupStore.handleSetPopupInfo(product)"
+        @click="
+          popupStore.togglePopup(true);
+          popupStore.handleSetPopupInfo(product);
+        "
       >
-        <p class="goods-item__popup-description" >Подробнее</p>
+        <p class="goods-item__popup-description">Подробнее</p>
       </div>
-      <div class="goods-items-tags" :class="{ tags__add: ItemStore.checkPresenceObj(product) !== -1 }">
-        <div class="goods-items-tags-hit" :class="{ show__category: hit }">
-          <p class="goods-items-tags-hit_text">Хит</p>
+      <div
+        class="goods-items__tags"
+        :class="{ tags__add: ItemStore.checkPresenceObj(product) !== -1 }"
+      >
+        <div class="goods-items__tags-hit" :class="{ show__category: hit }">
+          <p class="goods-items__tags-hit-text">Хит</p>
         </div>
         <div
-          class="goods-items-tags-hit_new"
+          class="goods-items__tags-hit_new"
           :class="{ show__category: latest }"
         >
-          <p class="goods-items-tags-hit_text">Новинка</p>
+          <p class="goods-items__tags-hit-text">Новинка</p>
         </div>
         <div
-          class="goods-items-tags-freezing"
+          class="goods-items__tags-freezing"
           :class="{ show__category: freeze }"
         >
-          <p class="goods-items-tags-hit_text">Заморозка</p>
+          <p class="goods-items__tags-hit-text">Заморозка</p>
         </div>
       </div>
-      <div class="img-slider" :class="{ slider__add: ItemStore.checkPresenceObj(product) !== -1 }">
-        <div class="img-slider-element"></div>
-        <div class="img-slider-element img-slider-element__chosen"></div>
-        <div class="img-slider-element"></div>
-        <div class="img-slider-element"></div>
+      <div
+        class="goods-items__img-slider"
+        :class="{ slider__add: ItemStore.checkPresenceObj(product) !== -1 }"
+      >
+        <div class="goods-items__img-slider-element"></div>
+        <div
+          class="goods-items__img-slider-element goodsItems__imgChoisen"
+        ></div>
+        <div class="goods-items__img-slider-element"></div>
+        <div class="goods-items__img-slider-element"></div>
       </div>
     </div>
-    <div class="goods-item__wrapper_block" :class="{ wrapper__add: ItemStore.checkPresenceObj(product) !== -1 }">
+    <div
+      class="goods-item__wrapper_block"
+      :class="{ wrapper__add: ItemStore.checkPresenceObj(product) !== -1 }"
+    >
       <div class="goods-item__description">
-      <h2 class="goods-item__description-title">
-        {{ name }}
-      </h2>
-      <p class="goods-item__description-characteristics">300 г · Германия</p>
-    </div>
-    <div class="goods-item__buy-block">
-      <div class="goods-item__price">
-        <div class="item-content-bonus" v-if="isBonus == true">
-              <p class="item-content-bonus-text">
-                +248
-              </p>
-              <img
-                class="as"
-                alt="arrow"
-                src="../images/icons/bonus.svg"
-              />
+        <h2 class="goods-item__description-title">
+          {{ name }}
+        </h2>
+        <p class="goods-item__description-characteristics">300 г · Германия</p>
+      </div>
+      <div class="goods-item__buy-block">
+        <div class="goods-item__price">
+          <div class="goods-item__content-bonus" v-if="isBonus == true">
+            <p class="goods-item__content-bonus-text">+248</p>
+            <img
+              class="goods-item__bonus-img"
+              alt="arrow"
+              src="../images/icons/bonus.svg"
+            />
           </div>
           <p class="goods-item__price-discount" v-else>110 ₽</p>
-        <div class="goods-price-current__price">
-          <p class="goods-item__price-current-price">{{ price }} ₽</p>
-          <p class="goods-item-unit">/ кг</p>
+          <div class="goods-item__current-price">
+            <p class="goods-item__current-price-text">{{ price }} ₽</p>
+            <p class="goods-item__current-price-unit">/ кг</p>
+          </div>
+        </div>
+        <img
+          class="goods-item__buy-block-img"
+          alt="arrow"
+          src="../images/icons/add-btn.svg"
+          v-if="ItemStore.checkPresenceObj(product) === -1"
+          @click="ItemStore.addToCart(product)"
+        />
+      </div>
+      <div
+        class="goods-item__add-to-cart"
+        v-if="ItemStore.checkPresenceObj(product) !== -1"
+      >
+        <div
+          class="goods-item__change-quantity"
+          @click="ItemStore.decrementQ(product)"
+        >
+          <img
+            class="goods-item__quantity-img"
+            alt="minus"
+            src="../images/icons/minus.svg"
+          />
+        </div>
+        <p class="goods-item-quantity-weight">
+          {{ ItemStore.countCurrentItemCountity(product) }} кг
+        </p>
+        <div
+          class="goods-item__change-quantity"
+          @click="ItemStore.addToCart(product)"
+        >
+          <img
+            class="goods-item__quantity-img"
+            alt="plus"
+            src="../images/icons/plus.svg"
+          />
         </div>
       </div>
-      <img
-        class="goods-item__buy-block-img"
-        alt="arrow"
-        src="../images/icons/add-btn.svg"
-        v-if="ItemStore.checkPresenceObj(product) === -1"
-        @click="ItemStore.addToCart(product);"
-      />
-    </div>
-    <div class="goods-item__add-to-cart"  v-if="ItemStore.checkPresenceObj(product) !== -1">
-      <div class="goods-item-change-quantity" @click="ItemStore.decrementQ(product)">
-        <img
-          class="goods-item-quantity-img"
-          alt="minus"
-          src="../images/icons/minus.svg"
-        />
-      </div>
-      <p class="goods-item-quantity-weight">{{ ItemStore.countCurrentItemCountity(product) }} кг</p>
-      <div class="goods-item-change-quantity"  @click="ItemStore.addToCart(product)">
-        <img
-          class="goods-item-quantity-img"
-          alt="plus"
-          src="../images/icons/plus.svg"
-        />
-      </div>
-    </div>
     </div>
   </article>
 </template>
@@ -159,7 +182,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-
 .description__add {
   bottom: 95px !important;
 }
@@ -172,18 +194,18 @@ const props = defineProps({
 }
 
 .goods-item__wrapper_block {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .wrapper__add {
   position: relative;
-  bottom: 65px
+  bottom: 65px;
 }
 
 .goods-item__buy-block-img {
   cursor: pointer;
 }
-.goods-item-change-quantity {
+.goods-item__change-quantity {
   cursor: pointer;
 }
 
@@ -193,7 +215,7 @@ const props = defineProps({
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
-  color: #0C0C0D;
+  color: #0c0c0d;
 }
 
 .goods-item__add-to-cart {
@@ -205,32 +227,32 @@ const props = defineProps({
   align-items: center;
 }
 
-.goods-item-change-quantity {
+.goods-item__change-quantity {
   width: 44px;
-  height: 44px; 
+  height: 44px;
   background-color: rgba(93, 136, 150, 0.08);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.item-content-bonus-text {
+.goods-item__content-bonus-text {
   margin: 0;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.item-content-bonus {
+.goods-item__content-bonus {
   display: flex;
   flex-direction: row;
   column-gap: 6px;
   justify-content: center;
   padding: 4px 0;
   border-radius: 40px;
-  background: linear-gradient(81deg, #FF782D 4.95%, #F32254 72.54%);
+  background: linear-gradient(81deg, #ff782d 4.95%, #f32254 72.54%);
   width: 51px;
   margin-bottom: 4px;
 }
@@ -256,14 +278,14 @@ const props = defineProps({
   margin: 0;
 }
 
-.goods-price-current__price {
+.goods-item__current-price {
   display: flex;
   flex-direction: row;
   margin: 0;
   align-items: center;
 }
 
-.goods-item__price-current-price {
+.goods-item__current-price-text {
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -272,7 +294,7 @@ const props = defineProps({
   margin: 0;
 }
 
-.goods-item-unit {
+.goods-item__current-price-unit {
   margin: 0;
   font-size: 15px;
   font-style: normal;
@@ -304,7 +326,7 @@ const props = defineProps({
   line-height: 120%;
   color: #858585;
 }
-.img-slider {
+.goods-items__img-slider {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -313,24 +335,24 @@ const props = defineProps({
   bottom: 4px;
 }
 
-.img-slider-element {
+.goods-items__img-slider-element {
   background-color: #f4f4f4;
   border-radius: 6px;
   width: 49px;
   height: 2px;
 }
 
-.img-slider-element__chosen {
+.goodsItems__imgChoisen {
   background-color: #858585;
 }
-.goods-items-tags-hit {
+.goods-items__tags-hit {
   background-color: #ff8c22;
   border-radius: 6px;
   display: none;
   padding: 6px 8px;
 }
 
-.goods-items-tags-hit_new {
+.goods-items__tags-hit_new {
   background-color: #10b145;
   border-radius: 6px;
   display: none;
@@ -338,14 +360,14 @@ const props = defineProps({
   margin-left: 6px;
 }
 
-.goods-items-tags-freezing {
+.goods-items__tags-freezing {
   background-color: #22c6ea;
   border-radius: 6px;
   display: none;
   padding: 6px 8px;
   margin-left: 6px;
 }
-.goods-items-tags-hit_text {
+.goods-items__tags-hit-text {
   margin: 0;
   font-size: 12px;
   font-style: normal;
@@ -361,14 +383,13 @@ const props = defineProps({
 }
 .goods-item__img-block {
   position: relative;
-
 }
 .goods-item__img-element {
   width: 240px;
   height: 240px;
 }
 
-.goods-items-raiting {
+.goods-items__raiting {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -376,7 +397,7 @@ const props = defineProps({
   left: 16px;
 }
 
-.goods-items-raiting__text {
+.goods-items__raiting-text {
   margin: 0;
   font-size: 14px;
   font-style: normal;
@@ -392,13 +413,13 @@ const props = defineProps({
   right: 14.5px;
 }
 
-.goods-items-tags {
+.goods-items__tags {
   position: absolute;
   bottom: 10px;
   left: 16px;
 }
 
-.goods-item-popup-opener {
+.goods-item__popup-opener {
   position: absolute;
   left: 40px;
   bottom: 60px;

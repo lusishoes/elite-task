@@ -1,15 +1,15 @@
 <template>
-  <div class='selectorItem'>
-      <p class="selectorItem__text"> {{ el.name }}</p>
+  <div class="selectorItem">
+    <p class="selectorItem__text">{{ el.name }}</p>
   </div>
 </template>
 
 <script setup>
-import { useElementChosen } from '../stores/elementChosenStore';
+import { useElementChosen } from "../stores/elementChosenStore";
 
 const elementChosen = useElementChosen();
 const props = defineProps({
-  el:  {
+  el: {
     type: Object,
     required: true,
   },
@@ -19,7 +19,7 @@ const props = defineProps({
 <style scoped>
 .selectorItem {
   padding: 12px;
-  background-color: #F2F3F5;
+  background-color: #f2f3f5;
   display: block;
   border-radius: 6px;
 }

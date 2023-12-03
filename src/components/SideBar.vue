@@ -3,7 +3,7 @@
     <SideBarTitle title="Бренд" :arrow="false" />
     <div class="sidebar-block">
       <SideBarTitle title="Страна" :arrow="true" />
-      <div class="sidebar-choisen-items">
+      <div class="sidebar-block__choisen-items">
         <ChosenItem
           v-for="sideBarItem of sideBarStore.contriesItems"
           :key="sideBarItem.id"
@@ -13,9 +13,9 @@
     </div>
     <div class="sidebar-block">
       <SideBarTitle title="Направления меню" :arrow="true" />
-      <div class="sidebar-choisen-items-block">
+      <div class="sidebar-block__list-container">
         <div class="sidebar-block-list">
-          <div class="sidebar-choisen-items">
+          <div class="sidebar-block__choisen-items">
             <ChosenItem
               v-for="sideBarItem of sideBarStore.sideBarItem"
               :key="sideBarItem.id"
@@ -24,7 +24,7 @@
           </div>
         </div>
         <img
-          class="sidebar-scrollbar"
+          class="sidebar-block__img"
           alt="scrollbar"
           src="../images/icons/scrollbar.svg"
         />
@@ -32,7 +32,7 @@
     </div>
     <div class="sidebar-block">
       <SideBarTitle title="Вид сыра" :arrow="true" />
-      <div class="sidebar-choisen-items">
+      <div class="sidebar-block__choisen-items">
         <ChosenItem
           v-for="sideBarItem of sideBarStore.typeOfCheeseItems"
           :key="sideBarItem.id"
@@ -42,7 +42,7 @@
     </div>
     <div class="sidebar-block">
       <SideBarTitle title="Вкус сыра" :arrow="true" />
-      <div class="sidebar-choisen-items">
+      <div class="sidebar-block__choisen-items">
         <ChosenItem
           v-for="sideBarItem of sideBarStore.tasteOfCheeseItems"
           :key="sideBarItem.id"
@@ -88,14 +88,13 @@ const sideBarStore = useSideBarItem();
 </script>
 
 <style scoped>
-
-.sidebar-choisen-items-block {
+.sidebar-block__list-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.sidebar-scrollbar {
+.sidebar-block__img {
   margin-top: 20px;
   height: 220px;
 }
@@ -121,7 +120,7 @@ const sideBarStore = useSideBarItem();
   row-gap: 30px;
 }
 
-.sidebar-choisen-items {
+.sidebar-block__choisen-items {
   display: flex;
   flex-direction: column;
   margin-top: 20px;

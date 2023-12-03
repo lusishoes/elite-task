@@ -1,126 +1,120 @@
 <template>
   <div
-    class="modal-overlay"
+    class="popup-overlay"
     :class="{ modal__visible: popupStore.isOpenPopup === true }"
   >
-    <div class="modal-content">
+    <div class="popup_container">
       <img
         alt="close"
         src="../images/icons/close.svg"
-        class="close-button"
+        class="popup__close-button"
         @click="popupStore.togglePopup(false)"
       />
-      <div class="modal-content__item-info">
-        <div class="modal-content__item-image">
-          <div class="modal-content-selectors">
-            <div class="goods-items-tags-hit" :class="{ show__category: popupStore.cardInfo?.hit }">
-              <p class="goods-items-tags-hit_text">Хит</p>
+      <div class="popup__item-info">
+        <div class="popup__item-image">
+          <div class="popup__selectors">
+            <div
+              class="popup__selectors-hit"
+              :class="{ show__category: popupStore.cardInfo?.hit }"
+            >
+              <p class="popup__selectors-text">Хит</p>
             </div>
-            <div class="goods-items-tags-hit_new" :class="{ show__category: popupStore.cardInfo?.latest }">
-              <p class="goods-items-tags-hit_text">Новинка</p>
+            <div
+              class="popup__selectors-new"
+              :class="{ show__category: popupStore.cardInfo?.latest }"
+            >
+              <p class="popup__selectors-text">Новинка</p>
             </div>
-            <div class="goods-items-tags-freezing" :class="{ show__category: popupStore.cardInfo?.freeze }">
-              <p class="goods-items-tags-hit_text">Заморозка</p>
+            <div
+              class="popup__selectors-freezing"
+              :class="{ show__category: popupStore.cardInfo?.freeze }"
+            >
+              <p class="popup__selectors-text">Заморозка</p>
             </div>
           </div>
           <img
             :src="popupStore.cardInfo?.img"
             @click="console.log(popupStore.cardInfo?.img)"
             alt="item"
-            class="modal-content__item-image_element"
+            class="popup__img-element"
           />
           <img
             src="../images/icons/emptyheart.svg"
             alt="heart"
-            class="modal-content__item-like"
+            class="popup__item-like"
           />
         </div>
-        <div class="item-content__item-description">
-          <h2 class="item-content-title">
+        <div class="popup__item-description">
+          <h2 class="popup__title">
             Корейка свиная на кости без хребта "СК Короча" "Мираторг" 5,42 кг
           </h2>
-          <div class="item-content-description__values">
-            <p class="item-producer">Fish & More</p>
-            <p class="item-weight">Россия, 12 кг</p>
+          <div class="popup__description-values">
+            <p class="popup__item-producer">Fish & More</p>
+            <p class="popup__item-weight">Россия, 12 кг</p>
           </div>
-          <div class="goods-items-raiting">
+          <div class="popup__items-raiting">
             <img
-              class="goods-items-raiting__img-element"
+              class="popup__items-raiting__img-element"
               alt="arrow"
               src="../images/icons/yellow-star.svg"
             />
-            <p class="goods-items-raiting__text">4.6</p>
+            <p class="popup__raiting-text">4.6</p>
           </div>
-          <div class="item-content-cart">
-            <div class="item-content-bonus">
-              <p class="item-content-bonus-text">
-                +18
-              </p>
+          <div class="popup__cart-info">
+            <div class="popup__cart-info__bonus">
+              <p class="popup__cart-info__text">+18</p>
               <img
-                class="as"
+                class="bonus icon"
                 alt="arrow"
                 src="../images/icons/bonus.svg"
               />
             </div>
-            <div class="item-content-price">
-              <p class="item-price-text">366 ₽ <span class="item-content-measure">/ кг</span></p>
+            <div class="popup__cart-info__price">
+              <p class="popup__cart-info__price-text">
+                366 ₽ <span class="item-content-measure">/ кг</span>
+              </p>
             </div>
-            <div class="item-content-price-description">
-              <p class="item-price-text-description">2456 ₽ <span class="item-price-text-description">/ кор</span></p>
+            <div class="popup__cart-info__price-description">
+              <p class="popup__cart-info__price-text-description">
+                2456 ₽
+                <span class="popup__cart-info__price-text-description"
+                  >/ кор</span
+                >
+              </p>
             </div>
           </div>
-          <div class="add-item-tocart">
-            <div class="add-item-btn">
-              Добавить в корзину
-            </div>
-            <p class="add-item-text">
-              В наличии много
-            </p>
+          <div class="popup__cart-info__add">
+            <div class="popup__cart-info__add-item">Добавить в корзину</div>
+            <p class="popup__cart-info__add-item_text">В наличии много</p>
           </div>
-          <p class="road-to-item-cart">
-            Перейти в карточку товара
-          </p>
+          <p class="popup__cart-info-goto-card">Перейти в карточку товара</p>
         </div>
       </div>
-      <div class="item-characteristics">
-        <h3 class="item-characteristics-title">
-          Характеристики
-        </h3>
-        <div class="item-characteristics-block">
-          <div class="item-characteristics-block-element">
-            <div class="item-characteristics-block-description">
-                <p class="item-elem-title">
-                Срок хранения
-                </p>
-                <p class="item-elem-description">
-                  1 год
-                </p>
+      <div class="popup__characteristics">
+        <h3 class="popup__characteristics-title">Характеристики</h3>
+        <div class="popup__characteristics-block">
+          <div class="popup__characteristics-block-element">
+            <div class="popup__characteristics-block__description">
+              <p class="popup__item-elem__title">Срок хранения</p>
+              <p class="popup__item-elem__description">1 год</p>
             </div>
-            <div class="item-characteristics-block-description">
-                <p class="item-elem-title">
-                  Тип транспортной упаковки
-                </p>
-                <p class="item-elem-description">
-                  Коробка
-                </p>
+            <div class="popup__characteristics-block__description">
+              <p class="popup__item-elem__title">Тип транспортной упаковки</p>
+              <p class="popup__item-elem__description">Коробка</p>
             </div>
           </div>
-          <div class="item-characteristics-block-element">
-            <div class="item-characteristics-block-description">
-                <p class="item-elem-title">
-                  Количество в транспортной упаковке
-                </p>
-                <p class="item-elem-description">
-                  10
-                </p>
+          <div class="popup__characteristics-block-element">
+            <div class="popup__characteristics-block__description">
+              <p class="popup__item-elem__title">
+                Количество в транспортной упаковке
+              </p>
+              <p class="popup__item-elem__description">10</p>
             </div>
-            <div class="item-characteristics-block-description">
-                <p class="item-elem-title">
-                  Количество в транспортной упаковке на паллете
-                </p>
-                <p class="item-elem-description">
-                  40
-                </p>
+            <div class="popup__characteristics-block__description">
+              <p class="popup__item-elem__title">
+                Количество в транспортной упаковке на паллете
+              </p>
+              <p class="popup__item-elem__description">40</p>
             </div>
           </div>
         </div>
@@ -135,16 +129,16 @@ const popupStore = usePopupStore();
 // const productObj = popupStore.cardInfo;
 </script>
 <style scoped>
-.item-elem-description {
+.popup__item-elem__description {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: 130%;
-  color: #0C0C0D;
+  color: #0c0c0d;
   margin: 0;
 }
 
-.item-elem-title {
+.popup__item-elem__title {
   margin: 0;
   font-size: 13px;
   font-style: normal;
@@ -153,52 +147,52 @@ const popupStore = usePopupStore();
   color: #858585;
 }
 
-.item-characteristics-block-description {
+.popup__characteristics-block__description {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
 }
 
-.item-characteristics-block-element {
+.popup__characteristics-block-element {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
 }
 
-.item-characteristics-block {
+.popup__characteristics-block {
   display: flex;
   flex-direction: row;
-  column-gap: 44px; 
+  column-gap: 44px;
   margin-top: 10px;
 }
 
-.item-characteristics-title {
+.popup__characteristics-title {
   margin: 0;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
-  color: #0C0C0D;
+  color: #0c0c0d;
 }
 
-.item-characteristics {
+.popup__characteristics {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
 }
 
-.road-to-item-cart {
+.popup__cart-info-goto-card {
   margin: 0;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
   opacity: 0.8;
-  color: #F3223C;
+  color: #f3223c;
   margin-top: 23px;
-} 
+}
 
-.add-item-text {
+.popup__cart-info__add-item_text {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -207,29 +201,29 @@ const popupStore = usePopupStore();
   margin: 0;
 }
 
-.add-item-tocart {
+.popup__cart-info__add {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   row-gap: 6px;
 }
-.add-item-btn {
+.popup__cart-info__add-item {
   display: flex;
   width: 200px;
   padding: 14px 0;
   justify-content: center;
   align-items: center;
   border-radius: 9px;
-  background-color: #F3223C;
+  background-color: #f3223c;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
-  color: #FFF;
+  color: #fff;
   margin: 0;
 }
 
-.item-price-text-description {
+.popup__cart-info__price-text-description {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -238,15 +232,13 @@ const popupStore = usePopupStore();
   margin: 0;
 }
 
-.item-content-price-description {
+.popup__cart-info__price-description {
   display: flex;
   flex-direction: row;
-
 }
-.item-content-price {
+.popup__cart-info__price {
   display: flex;
   flex-direction: row;
-
 }
 
 .item-content-measure {
@@ -259,44 +251,44 @@ const popupStore = usePopupStore();
   color: #858585;
 }
 
-.item-price-text {
+.popup__cart-info__price-text {
   margin: 0;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
-  color: #0C0C0D;
+  color: #0c0c0d;
 }
 
-.item-content-cart {
+.popup__cart-info {
   margin-top: 58px;
   display: flex;
   flex-direction: column;
   row-gap: 7px;
 }
 
-.item-content-bonus-text {
+.popup__cart-info__text {
   margin: 0;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.item-content-bonus {
+.popup__cart-info__bonus {
   display: flex;
   flex-direction: row;
   column-gap: 6px;
   justify-content: center;
   padding: 4px 0;
   border-radius: 40px;
-  background: linear-gradient(81deg, #FF782D 4.95%, #F32254 72.54%);
+  background: linear-gradient(81deg, #ff782d 4.95%, #f32254 72.54%);
   width: 51px;
 }
 
-.goods-items-raiting {
+.popup__items-raiting {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -304,7 +296,7 @@ const popupStore = usePopupStore();
   top: 90px;
 }
 
-.goods-items-raiting__text {
+.popup__raiting-text {
   margin: 0;
   font-size: 14px;
   font-style: normal;
@@ -313,7 +305,7 @@ const popupStore = usePopupStore();
   color: #585858;
   margin-left: 4px;
 }
-.item-producer {
+.popup__item-producer {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -322,7 +314,7 @@ const popupStore = usePopupStore();
   margin: 0;
 }
 
-.item-weight {
+.popup__item-weight {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -330,7 +322,7 @@ const popupStore = usePopupStore();
   color: #858585;
   margin: 0;
 }
-.item-content-description__values {
+.popup__description-values {
   display: flex;
   flex-direction: row;
   width: 178px;
@@ -338,12 +330,12 @@ const popupStore = usePopupStore();
   margin-top: 16px;
 }
 
-.item-content__item-description {
+.popup__item-description {
   margin-left: 30px;
   width: 300px;
   height: 335px;
 }
-.item-content-title {
+.popup__title {
   font-style: normal;
   font-weight: 500;
   line-height: 135%;
@@ -352,17 +344,17 @@ const popupStore = usePopupStore();
   margin: 0;
 }
 
-.modal-content__item-like {
+.popup__item-like {
   position: absolute;
   right: 16px;
   top: 16px;
 }
-.modal-content-selectors {
+.popup__selectors {
   position: absolute;
   top: 16px;
   left: 16px;
 }
-.goods-items-tags-hit {
+.popup__selectors-hit {
   background-color: #ff8c22;
   border-radius: 6px;
   display: none;
@@ -370,12 +362,12 @@ const popupStore = usePopupStore();
   /* position: absolute; */
 }
 
-.modal-content__item-image_element {
+.popup__img-element {
   width: 100%;
   border-radius: 9px;
 }
 
-.goods-items-tags-hit_text {
+.popup__selectors-text {
   margin: 0;
   font-size: 12px;
   font-style: normal;
@@ -383,12 +375,12 @@ const popupStore = usePopupStore();
   line-height: 120%;
   color: #fff;
 }
-.modal-content__item-info {
+.popup__item-info {
   display: flex;
   flex-direction: row;
 }
 
-.modal-content__item-image {
+.popup__item-image {
   width: 335px;
   height: 335px;
   position: relative;
@@ -396,7 +388,7 @@ const popupStore = usePopupStore();
   border: 1px solid rgba(93, 136, 150, 0.08);
 }
 
-.modal-overlay {
+.popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -412,7 +404,7 @@ const popupStore = usePopupStore();
   display: flex;
 }
 
-.modal-content {
+.popup_container {
   padding: 30px;
   border-radius: 12px;
   background: #fff;
@@ -426,7 +418,7 @@ const popupStore = usePopupStore();
   flex-direction: column;
 }
 
-.goods-items-tags-hit_new {
+.popup__selectors-new {
   background-color: #10b145;
   border-radius: 6px;
   display: none;
@@ -434,7 +426,7 @@ const popupStore = usePopupStore();
   margin-left: 6px;
 }
 
-.close-button {
+.popup__close-button {
   position: absolute;
   top: 30px;
   right: 30px;
@@ -443,13 +435,13 @@ const popupStore = usePopupStore();
   border: none; */
   cursor: pointer;
 }
-.goods-items-tags-freezing {
+.popup__selectors-freezing {
   background-color: #22c6ea;
   border-radius: 6px;
   display: none;
   padding: 6px 8px;
   margin-left: 6px;
-} 
+}
 
 .show__category {
   display: inline-block;

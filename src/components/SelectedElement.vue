@@ -1,20 +1,20 @@
 <template>
-  <div class='selected-element'>
-      <p class="selected-element__text"> {{ el.name }}</p>
-      <img 
-        src="../images/icons/greencloseicon.svg"
-        alt="cross"
-        class="selected-element__img"
-      />
+  <div class="selected-element">
+    <p class="selected-element__text">{{ el.name }}</p>
+    <img
+      src="../images/icons/greencloseicon.svg"
+      alt="cross"
+      class="selected-element__img"
+    />
   </div>
 </template>
 
 <script setup>
-import { useElementChosen } from '../stores/elementChosenStore';
+import { useElementChosen } from "../stores/elementChosenStore";
 
 const elementChosen = useElementChosen();
 const props = defineProps({
-  el:  {
+  el: {
     type: Object,
     required: true,
   },
@@ -28,7 +28,7 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
- 
+
   border-radius: 6px;
 }
 
@@ -38,7 +38,7 @@ const props = defineProps({
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
-  color: #46A175;
+  color: #46a175;
 }
 
 .selected-element__img {

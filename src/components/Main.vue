@@ -1,17 +1,13 @@
 <template>
   <main class="main">
     <SideBar />
-    <ProductPage
-
-    />
+    <ProductPage />
   </main>
 </template>
 
 <script setup>
 import SideBar from "./SideBar.vue";
 import ProductPage from "./ProductPage.vue";
-
-
 </script>
 
 <style scoped>
